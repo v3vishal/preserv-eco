@@ -1,2 +1,0 @@
-# preserv-eco
-Preserving Ecosystems 
