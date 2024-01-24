@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trophic Level Energy Consumption Calculator</title>
+        <body bgcolor="cyan", background="https://media.istockphoto.com/id/1199099740/vector/a-horizontal-vector-illustration-of-a-plain-grunge-effect-blank-white-colored-old-blotched.jpg?s=612x612&w=0&k=20&c=49s7h5CgBhGzsV8PJyS3_pcZKw8G5J8Mi7iNHhJq7ww=">
+            <font face="Consolas"; size="5"; color="black">
+                <center>Energy Consumption in Trophic Levels</center>
+                </font>
+                <font face="Consolas"; color="black">
+                    <center> You can calculate the energy consumption in 4 trophic levels by entering the value of sun energy that will fall on the surface of Earth.
+                        <br>
+                        <b>This webpage and its code with the formulae used in the graph is publicly available at <a href="https://github.com/v3vishal/bioenergy-calc"> GitHub </a> </b>
+                    <br>Contact us at <a href="mailto:vvvvishal2043@gmail.com">vvvvishal2043@gmail.com</a></center>
+                </font>
+            <div id="chart-container">
+            <canvas id="energy-chart"></canvas>
+        </div>
+        <br>
+        <center><input type="number" id="inputValue" placeholder="Enter sun energy value">
+<button onclick="updateGraph()">Update Graph</button></center>
+
+        </body>
+        <style>
+            #chart-container {
+                width: 80%;
+                margin: 0 auto;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="test4.js"></script>
+    </head>
+</html>
