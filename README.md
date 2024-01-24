@@ -10,4 +10,4 @@ Keep our environment clean.
 
 
 
-A project by Vishal VV, in collaboration with Sathvik B
+A project coded by Vishal VV, in collaboration with Sathvik B
