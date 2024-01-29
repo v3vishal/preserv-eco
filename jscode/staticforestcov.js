@@ -1,4 +1,4 @@
-/*// JS 
+// JS 
 var seriesPalette = ['#c9c9c9', '#9E9E9E']; 
 var differencePalette = ['#C8E6C9', '#FFAB91']; 
   
@@ -66,13 +66,13 @@ function makeSeries(datae) {
     
   ]; 
 } 
-  */
+
 /** 
  * Dynamically creates a difference series for the given array of two series. 
  * @param seriess - array of two series 
  * @param diffColors - array of two colors used for points depending on whether they are positive or negative. 
  */
-/*
+
 function makeDifferenceSeries( 
   seriess, 
   diffColors 
@@ -112,12 +112,14 @@ function makeDifferenceSeries(
       }; 
     }); 
   } 
-} */
+}
+/*
 // JS 
 var chart, data; 
 var palette = ['#4A7C59', '#8FC0A9']; 
-  
+  */
 /* Resembles underline Used to highlight selected label. */
+/*
 var selectedFill = { 
   angle: 90, 
   stops: [ 
@@ -141,9 +143,9 @@ JSC.fetch(
   .catch(function(error) { 
     console.error(error); 
   });
-}
+
 function renderChart(series) { 
-  return JSC.chart('chartDiv3', {
+  return JSC.chart('chartDiv2', {
     debug: true, 
     title: { 
       label: { 
@@ -188,6 +190,7 @@ function renderChart(series) {
       scale: { 
         type: 'stackedFull', 
         /* Pad the axis range so that outside point labels fit inside the chart */
+        /*
         range_padding: 0.1, 
         invert: true
       } 
@@ -222,14 +225,14 @@ function renderChart(series) {
         events: { change: changeEvent }, 
         value: '2020', 
         items: { 
-          '2020': { label_text: '2020' }, 
-          '2060': { label_text: '2060' } 
+          '2011': { label_text: '2011' }, 
+          '2019': { label_text: '2019' } 
         } 
       } 
     } 
   }); 
 } 
-  
+}
 function changeEvent(val) { 
   chart.options({ 
     series: makeSeries(data, val) 
@@ -252,4 +255,4 @@ function makeSeries(data, year) {
       }; 
     }) 
     .series(data); 
-} 
+} */

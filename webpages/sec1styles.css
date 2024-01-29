@@ -13,11 +13,7 @@
     margin: 0;
     padding: 0;
   }
-  
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
+
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cairo', sans-serif;
@@ -55,42 +51,36 @@
   .italic {
     font-style: italic;
   }
-  
-  .paragraph,
-  .impact-paragraph,
-  .tiger-paragraph,
-  .conservation-paragraph,
-  .calculator-body {
-    font-size: 1em;
-    text-align: left;
-    margin-top: 10px;
-  }
-  
-  .impact-heading,
-  .tiger-heading,
-  .calculator-heading,
-  .conservation-heading {
-    font-size: 1.2em;
-    margin-top: 20px;
-  }
-  
-  .calculator,
-  .calculator-body,
-  .conservation-paragraph {
-    max-width: 800px;
+
+.container {
+    width: 80%;
     margin: 0 auto;
-  }
-  
-  #chartDiv,
-  #chartDiv2,
-  #chartDiv3 {
+    padding: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+hr {
+    color: crimson;
+    size: 3px;
+    width: 95%;
+}
+
+.center {
+    text-align: center;
+}
+
+.chart-container {
     max-width: 1500px;
     height: 400px;
     margin: 0 auto;
-  }
-  
-  input,
-  button {
-    margin-top: 10px;
-  }
-  
+}
+
+.chart-container-small {
+    max-width: 900px;
+    height: 400px;
+    margin: 0 auto;
+}

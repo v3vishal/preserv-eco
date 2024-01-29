@@ -13,7 +13,6 @@ var trophicLvls = 4;
             {type: 'Trees/Plants', value: Math.round(lastmin3Val)},);
         var amount = 150;
         var chart;
-        
         initializeChart()
 
         function initializeChart() {
@@ -221,6 +220,5 @@ var trophicLvls = 4;
                 alert('Please enter a valid numeric value for Carnivores.');
             }
         }
-window.onload = function() {
-            initializeChart();
-        }
+
+        initializeChart();
