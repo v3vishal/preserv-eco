@@ -47,11 +47,11 @@ var trophicLvls = 4;
                     },
                     focusGlow: false
                 },
-                series: makeSeries(data)
+                series: makeSeriesu(data)
             });
         }
 
-        function makeSeries(data) {
+        function makeSeriesu(data) {
             return data.map(function (item) {
                 var points = [],
                     maxImages = Math.round(item.value / amount);

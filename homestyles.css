@@ -1,10 +1,19 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Century Gothic', sans-serif;
     font-size: 16px;
     margin: 0;
     padding: 0;
     background: url("res/bghome.jpeg");
+    height: 100vh; /* Set the height of the body to the full viewport height */
+    background-size: cover; /* Set background-size to 100% 100% to fit the image to the height of the display */
     background-repeat: repeat-x;
+    background-attachment: fixed;
 }
 
 h1 {
