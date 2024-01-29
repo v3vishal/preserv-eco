@@ -127,7 +127,7 @@ var selectedFill = {
     [1, '#000000'] 
   ] 
 }; 
-
+window.onload = function() {
 JSC.fetch( 
   '../res/stcforcov.csv'
 ) 
@@ -141,7 +141,7 @@ JSC.fetch(
   .catch(function(error) { 
     console.error(error); 
   });
-  
+}
 function renderChart(series) { 
   return JSC.chart('chartDiv3', { 
     title: { 

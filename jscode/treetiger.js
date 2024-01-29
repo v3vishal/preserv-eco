@@ -14,7 +14,7 @@ var trophicLvls = 4;
         var amount = 150;
         var chart;
         
-        
+        initializeChart()
 
         function initializeChart() {
             var color = '#999900';
