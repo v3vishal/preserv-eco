@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tree Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+  <style>
+    #map { height: 600px; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src="https://unpkg.com/@turf/turf@7.0.0/dist/turf.min.js"></script>
+  <script>
+    var map = L.map('map').setView([0, 0], 2); // Centered at (0, 0) with zoom level 2
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add a geocoding control for easy location searching
+    L.Control.geocoder().addTo(map);
+
+    var drawnItems = new L.FeatureGroup().addTo(map);
+
+    var drawControl = new L.Control.Draw({
+      draw: {
+        polygon: true,
+        marker: false,
+        circlemarker: false,
+        rectangle: false,
+        circle: false,
+        polyline: false,
+      },
+      edit: {
+        featureGroup: drawnItems,
+        remove: false
+      }
+    });
+
+    map.addControl(drawControl);
+
+    map.on('draw:created', function (e) {
+      var type = e.layerType;
+      var layer = e.layer;
+
+      if (type === 'polygon') {
+        drawnItems.clearLayers();
+        drawnItems.addLayer(layer);
+
+        // Calculate the area of the drawn polygon using Turf.js
+        var selectedArea = turf.area(turf.polygon(layer.toGeoJSON().geometry.coordinates));
+        console.log('Selected Area (in square meters):', selectedArea);
+
+        // Display the selected area on the map
+        var areaText = L.control();
+        areaText.onAdd = function (map) {
+          this._div = L.DomUtil.create('div', 'info');
+          this.update(selectedArea);
+          return this._div;
+        };
+
+        areaText.update = function (selectedArea) {
+          this._div.innerHTML = '<h4>Selected Area</h4>' +
+            '<p>' + selectedArea.toFixed(2) + ' square meters</p>';
+        };
+
+        areaText.addTo(map);
+
+        // Query Overpass API for trees within the selected polygon
+        var bounds = layer.getBounds();
+        var query = `
+          [out:json];
+          (
+            node["natural"="tree"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+            way["natural"="tree"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+          );
+          out body;
+          >;
+          out skel qt;`;
+
+        fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`)
+          .then(response => response.json())
+          .then(data => {
+            // Create a Turf.js FeatureCollection from the Overpass API data
+            var treesFeatureCollection = {
+              type: 'FeatureCollection',
+              features: data.elements.map(element => ({
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [element.lon, element.lat]
+                },
+                properties: element.tags
+              }))
+            };
+
+            // Display the forest cover information on the map
+            L.geoJSON(treesFeatureCollection, {
+              pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, { radius: 5, fillOpacity: 0.8 });
+              },
+              onEachFeature: function (feature, layer) {
+                if (feature.properties && feature.properties.tags) {
+                  layer.bindPopup(Object.entries(feature.properties.tags)
+                    .map(([key, value]) => `${key}: ${value}`)
+                    .join('<br>'));
+                }
+              }
+            }).addTo(map);
+          });
+      }
+    });
+  </script>
+</body>
+</html>

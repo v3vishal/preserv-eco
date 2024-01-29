@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Cairo';
+    src: url('../fonts/Cairo/CairoVarWght.ttf') format('truetype');
+    font-weight: 400; /* Adjust the font weight as needed */
+  }
+  
+  body {
+    background-image: url('../res/sec1bg.jpeg');
+    background-size: cover;
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+  }
+  
+  h2 {
+    font-size: 2em;
+  }
+  
+  h3 {
+    font-size: 1.8em;
+  }
+  
+  h4 {
+    font-size: 1.5em;
+  }
+  
+  h5 {
+    font-size: 1.2em;
+  }
+  
+  h6 {
+    font-size: 1em;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .italic {
+    font-style: italic;
+  }
+  
+  .paragraph,
+  .impact-paragraph,
+  .tiger-paragraph,
+  .conservation-paragraph,
+  .calculator-body {
+    font-size: 1em;
+    text-align: left;
+    margin-top: 10px;
+  }
+  
+  .impact-heading,
+  .tiger-heading,
+  .calculator-heading,
+  .conservation-heading {
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+  
+  .calculator,
+  .calculator-body,
+  .conservation-paragraph {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  #chartDiv,
+  #chartDiv2,
+  #chartDiv3 {
+    max-width: 1500px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  
+  input,
+  button {
+    margin-top: 10px;
+  }
+  

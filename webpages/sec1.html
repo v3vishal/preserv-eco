@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandipur Case Study</title>
+    <link rel="stylesheet" href="sec1styles.css">
+    <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+    <script src="../jscode/treetiger.js"></script>
+    <script src="../jscode/statictig.js"></script>
+    <script src="../jscode/staticforestcov.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <font face="Consolas" size="5" color="black">
+            <div class="center">
+                <h2>Bandipur - Plant and Wildlife</h2>
+                <h3><i>How plant and wildlife get affected when an ecological imbalance occurs.</i></h3>
+            </div>
+        </font>
+        <font face="Consolas">
+            <hr>
+            <p align="left">Picture by European Space Agency <br><a rel="nofollow" class="external free" href="http://www.esa.int/ESA">http://www.esa.int/ESA</a>
+                <a href="https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en" title="Creative Commons Attribution-Share Alike 3.0 igo">CC BY-SA 3.0 igo</a>,
+                <a href="https://commons.wikimedia.org/w/index.php?curid=77230089">Link</a> </p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Bandipur_Forest_Fire_2019_Sentinel_2A_Data.gif" width="250" height="200" align="left">
+            <p align="right">Picture by <a href="//commons.wikimedia.org/wiki/User:NaveenNkadalaveni" title="User:NaveenNkadalaveni">NaveenNkadalaveni</a> - <span class="int-own-work" lang="en">Own work</span>
+                <br> <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>,
+                <a href="https://commons.wikimedia.org/w/index.php?curid=76855182">Link</a>
+            </p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Bandipur_fires_2019.jpg/1024px-Bandipur_fires_2019.jpg" width="300" height="200" align="right">
+            <div class="center">
+                In the 2019 fires that occurred in Bandipur, a lot of flora and fauna was affected by the colossal fires that damaged a huge amount of trees. <br>
+                The forest fire in 2019 of Bandipur led to a reduction in forest coverage of around <a href="https://ge.bujournals.com/articles/changes-of-land-use-land-cover-in-bandipur-national-park">3.46%</a> as per the
+                difference in forest cover area in 2011 and 2019, which translates to an estimated reduction of 12 to 15 lakh trees over the total area of nearly 1400 sq. km of area, assuming around 100 fully grown trees (plus or minus)
+                per acre.
+                <br> Here, to calculate the amount of Tigers that could have benefitted by the amount of trees lost, the following was done; <br> <br>
+                <li>As per the 10% law of energy transfer efficiency, with an assumption of 1000 Joules of energy absorption by a tree on 1,00,000 joules of sun energy that would fall on the surface of Earth, that translates to 1 Joule of energy
+                    transferred to a tiger, where the tiger is the tertiary consumer. With an estimated 5000 Joules of energy consumption for a tiger per day, this would mean that around 5000 trees would be needed to sustain the energy requirement
+                    of a tiger per day.</li>
+                <br>Therefore, a loss of 12 to 15 lakhs of trees would have indirectly (via the food chain) meant that the energy requirement for around 250 to 300 tigers would have been impacted.
+                <br><br> Presently, we have a very small number of tigers. The current extent of forestation and tree density is essential to maintain and sustain the current population. Any further reduction will not only create pressure on the
+                existing ecosystem but also limit further expansion of the tiger population. Incidents like fire, leading to a depletion of tree density would hence be detrimental to wildlife at large and in this case, tigers are the ones affected
+                by this.
+                <h4>Invasive species across few trophic levels:</h4>
+                <li> <u>Plants</u>: Water hyacinth, Carrot grass, Siam weed, Wild tamarind, Black wattle, Mesquite, Lantana camara, and Pogostemon benghalensis - these are a few invasive plants that can choke native species preventing energy
+                    transfer to the next trophic level, i.e. Herbivores and top predators.</li>
+                <li> <u>Herbivores</u>: The Yellow Crazy Ant species is one of the most invasive species, listed in the top 100 worst invaders in the world according to the Invasive Species Specialist Group. They are known to kill mammals, birds,
+                    reptiles, and land crabs which again affect the food chain.</li>
+                These all together indirectly affect the tiger causing endangerment and ecological imbalance.
+            </div>
+        </font>
+        <br>
+        <font face="Consolas">
+            <a href="https://pib.gov.in/PressReleaseIframePage.aspx?PRID=1943922#:~:text=The%20tiger%20abundance%20within%20the%20Tiger%20Reserve%20is%20highest%20in%20Corbett%20(260),%20followed%20by%20Bandipur%20(150)">Source for Tiger Amount</a>
+            <div class="chart-container" id="chartDiv"></div>
+            <br>
+            <label for="newTigerValue">Enter new Tiger value:</label>
+            <input type="number" id="newTigerValue" placeholder="Enter new Tiger value">
+            <button onclick="updateTigerValue()">Update Tigers</button>
+            <br>
+            <label for="newTreeValue">Enter new Tree value:</label>
+            <input type="number" id="newTreeValue" placeholder="Enter new Tree value">
+            <button onclick="updateTreeValue()">Update Trees</button>
+            <br>
+            <label for="newHerbivoresValue">Enter new Herbivores value:</label>
+            <input type="number" id="newHerbivoresValue" placeholder="Enter new Herbivores value">
+            <button onclick="updateHerbivoresValue()">Update Herbivores</button>
+            <br>
+            <label for="newCarnivoresValue">Enter new Carnivores value:</label>
+            <input type="number" id="newCarnivoresValue" placeholder="Enter new Carnivores value">
+            <button onclick="updateCarnivoresValue()">Update Carnivores</button>
+            
+            <div class="chart-container-small" id="chartDiv2"></div>
+            <div class="chart-container-small" id="chartDiv3"></div>
+            <br>
+            <a href="https://v3vishal.github.io/bioenergy-calc">Calculate energy consumption</a>
+            <hr>
+            <div class="center">
+                DISCLAIMER: All references have been provided as hyperlinks along with the text. The values for the reduction in the number of trees are purely estimates and not actual values, calculated with an assumption as mentioned in this
+                page.
+                Various assumptions have been made due to lack of data in the public domain. The entire content of this page is purely an academic exercise and any content in this page shouldn't be taken as reference.
+                <br>
+                <b>This webpage and its code with the formulae used in the graph is publicly available at <a href="https://github.com/v3vishal/bandipur-calc">GitHub </a></b>
+                <br>
+                <h4>Made by Vishal V V, contact us at <a href="mailto:vvvvishal2043@gmail.com">vvvvishal2043@gmail.com</a></h4>
+            </div>
+        </font>
+    </div>
+</body>
+
+</html>
