@@ -26,6 +26,7 @@ series.push(
 ); 
   
 var chartu = JSC.chart('chartDiv3', { 
+  debug: true,
   type: 'horizontal column solid', 
   palette: seriesPalette, 
   title_label_text: 

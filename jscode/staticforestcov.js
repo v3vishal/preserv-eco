@@ -143,7 +143,8 @@ JSC.fetch(
   });
 }
 function renderChart(series) { 
-  return JSC.chart('chartDiv3', { 
+  return JSC.chart('chartDiv3', {
+    debug: true, 
     title: { 
       label: { 
         text: 
