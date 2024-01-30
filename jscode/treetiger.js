@@ -172,10 +172,10 @@ var trophicLvls = 4;
                     amount = tigrval;
                     data = [];
                     data.push(
-                        {type: "Trees/Plants", value: treeval*1.2},
+                        {type: "Trees/Plants", value: (treeval*1.2)*5},
                         {type: "Herbivores", value: Math.round(herbval)},
-                        {type: "Carnivores", value: Math.round(carnval/1.25)},
-                        {type: "Tigers", value: Math.round(tigrval)}
+                        {type: "Carnivores", value: Math.round(carnval/1.25)*1.2},
+                        {type: "Tigers", value: Math.round(tigrval)*6}
                     );
                     chart.destroy();
                     initializeChart();

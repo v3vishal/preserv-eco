@@ -47,7 +47,7 @@
                     {
                         label: 'Energy (Units)',
                         data: energyData,
-                        backgroundColor: 'rgba(75, 192, 192, 0.6',
+                        backgroundColor: 'rgba(21, 5, 120, 0.8',
                     },
                 ],
             },

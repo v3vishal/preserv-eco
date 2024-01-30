@@ -1,1 +1,145 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tree Map</title>
+  <center><h1>Geographical Analysis of Forest Cover</h1>
+  <h3>Hey there! Using the map added below, you can select a region and find out the no. of tree nodes that are present in the forest, and you can directly apply that information into our <a href="./sec3.html>">tree tiger impact calculator</a> to find the impact for that region!</h3>
+  Note: the data retrieved from the map may not be accurate due to this being OpenStreetMap - open source map which has data only that people have contributed.</center>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+  <style>
+    #map { height: 600px; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.10.0/proj4.js" integrity="sha512-e3rsOu6v8lmVnZylXpOq3DO/UxrCgoEMqosQxGygrgHlves9HTwQzVQ/dLO+nwSbOSAecjRD7Y/c4onmiBVo6w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    var map = L.map('map').setView([0, 0], 2); // Centered at (0, 0) with zoom level 2
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add a geocoding control for easy location searching
+    L.Control.geocoder().addTo(map);
+
+    var drawnItems = new L.FeatureGroup().addTo(map);
+
+    var drawControl = new L.Control.Draw({
+      draw: {
+        polygon: true,
+        marker: false,
+        circlemarker: false,
+        rectangle: false,
+        circle: false,
+        polyline: false,
+      },
+      edit: {
+        featureGroup: drawnItems,
+        remove: false
+      }
+    });
+
+    map.addControl(drawControl);
+
+    map.on('draw:created', function (e) {
+      var type = e.layerType;
+      var layer = e.layer;
+      // Calculate the area of the drawn polygon using Turf.js
+var selectedArea = turf.area(layer.toGeoJSON().geometry);
+console.log('Selected Area (in square meters):', selectedArea);
+
+      // Check and correct the direction of the drawn polygon
+var clockwise = turf.booleanClockwise(layer.toGeoJSON().geometry.coordinates[0]);
+
+if (!clockwise) {
+  layer.toGeoJSON().geometry.coordinates[0] = layer.toGeoJSON().geometry.coordinates[0].reverse();
+}
+
+
+      if (type === 'polygon') {
+        drawnItems.clearLayers();
+        drawnItems.addLayer(layer);
+
+        // Query Overpass API for trees within the selected polygon
+        var bounds = layer.getBounds();
+        var query = `
+  [out:json];
+  (
+    node["landuse"="forest"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+    way["landuse"="forest"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+    relation["landuse"="forest"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+    
+    node["natural"="wood"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+    way["natural"="wood"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+    relation["natural"="wood"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+  );
+  out body;
+  >;
+  out skel qt;`;
+
+
+        fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`)
+          .then(response => response.json())
+          .then(data => {
+            // Log the data received from the Overpass API for debugging
+console.log('Overpass API Data:', data);
+
+// Filter out nodes without coordinates
+var treeNodes = data.elements.filter(element => element.type === 'node' && element.lat && element.lon);
+
+// Log the filtered nodes for debugging
+console.log('Filtered Tree Nodes:', treeNodes);
+
+// Create a Turf.js FeatureCollection from the filtered data
+var treesFeatureCollection = {
+  type: 'FeatureCollection',
+  features: treeNodes.map(node => ({
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [node.lon, node.lat]
+    },
+    properties: node.tags
+  }))
+};
+// Filter out nodes without coordinates
+var treeNodes = data.elements.filter(element => element.type === 'node' && element.lat && element.lon);
+
+// Log the filtered nodes for debugging
+console.log('Filtered Tree Nodes:', treeNodes);
+
+// Count the number of tree nodes
+var numberOfTreeNodes = treeNodes.length;
+console.log('Number of Tree Nodes within Selected Polygon:', numberOfTreeNodes);
+
+// Display the number of tree nodes on the map
+var nodeCountText = L.control();
+nodeCountText.onAdd = function (map) {
+  this._div = L.DomUtil.create('div', 'info');
+  this.update(numberOfTreeNodes);
+  return this._div;
+};
+
+nodeCountText.update = function (numberOfTreeNodes) {
+  this._div.innerHTML = '<h4>Number of Tree Nodes within Selected Polygon</h4>' +
+    '<p>' + numberOfTreeNodes + '</p>';
+};
+
+nodeCountText.addTo(map);
+
+          });
+      }
+    });
+  </script>
+</body>
+</html>
