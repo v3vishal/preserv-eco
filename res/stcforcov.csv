@@ -1,3 +1,5 @@
-forest_cov,year_2011,year_2019
-Bandipur Forest,53.13,49.67
-Other,46.87,50.33
+datatype,region,year_2011,year_2019
+Forest Cover,Bandipur Forest,53.13,49.67
+Other,Bandipur Forest,46.87,50.33
+Forest Cover,Bandipur Forest,53.13,49.67
+Other,Bandipur Forest,46.87,50.33
