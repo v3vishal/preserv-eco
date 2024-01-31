@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>carboncalculator</title>
+    <title>Carbon Calculator</title>
   </head>
 
   <style>
@@ -39,34 +39,20 @@
         max-width: 1200px;
         margin: 20px auto; /* Adjust the margin for overall spacing */
     }
-    
-    div {
+    section {
+        box-sizing: border-box;
         color: black;
-        flex: 0 1 calc(45% - 40px); /* Adjust the width of each section */
-        margin: 20px;
-        border-radius: 25px;
-        background: #ffffff;
-        padding: 20px;
-    }
-    
-    #rcorners2,
-    #rcorners3,
-    #rcorners4 {
-        height: 155px;
-        opacity: 0.8;
-        text-align: center;
-    }
-    
-    #rcorners4 {
-        height: 255px;
+        padding: 20px; /* Added padding here */
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin: 20px 0;
+        width: 100%; /* Ensure full width within the container */
     }
     
     /* Media query for larger screens */
-    @media only screen and (min-width: 600px) {
-        #rcorners1,
-        #rcorners2,
-        #rcorners3,
-        #rcorners4 {
+    @media only screen and (min-width: 800px) {
+        section {
             max-width: calc(45% - 40px); /* Adjust max-width for the padding */
         }
     }
@@ -74,20 +60,21 @@
 </style>
 
 <body>
+    
 <h1 style="background-color:Black;"> Carbon Calculator </h1>
-
+<div class="container">
 <section>
-    <div id="rcorners4">
+    <center>
 <h3 style="color:green;">Carbon Calculator SOM to SOC </h3>
         <p style="color:DodgerBlue;">Enter the soil organic matter percentage:</p>
         <input type="text" id="organicMatterInput" name="organicMatterValue">
         <button type="button" onclick="calculateOrganicMatter()">Calculator</button>
         <p style="color:DodgerBlue;">Value of SOIL organic matter % is</p>
         <p style="color:DodgerBlue;" id="organicMatterResult"></p>
-    </div>
+    </center>
 </section>
 <section>
-    <div id="rcorners4">
+    <center>
 <h3 style="color:green;">Carbon Calculator SOC to SOM </h3>
 
         <p style="color:DodgerBlue;">Enter the soil organic Carbon percentage:</p>
@@ -95,7 +82,7 @@
         <button type="button" onclick="calculateOrganicCarbon()">Calculator</button>
         <p style="color:DodgerBlue;">Value of SOIL organic carbon % is</p>
         <p style="color:DodgerBlue;" id="organicCarbonResult"></p>
-    </div>
+    </center>
 </section>
     <script>
         function calculateOrganicCarbon() {
@@ -129,7 +116,7 @@
 
 <section>
 <body style="text-align:center;">
-<div id="rcorners4">
+<center>
   <h3 style="color:green;">Carbon Calculator to find the amount of organic matter in your farm land </h3>
 
 
@@ -153,33 +140,33 @@ Enter area of soil to measure(in hectare)
                             onclick="myFunction()">
                           Calculator
                       </button>
-<p id="demo">the organic matter</p>
+<p id="demo">the organic matter</p></center>
 </section>
-    </div>
-    <div>
+    <section>
         Here’s how SOC and SOM benefit plants and how you can manage them for better plant growth:
 <br>
 
-<section>
+
 <li>Increased water holding capacity in soils: This builds drought resilience.</li>
 <li>Lower soil density: As you increase carbon, density decreases because organic compounds are less dense than the soil minerals. When soil is less dense, the roots can travel through the soil and scavenge for nutrients and water more easily.</li>
 <li>Increased water infiltration: Organic carbon helps to form soil aggregates, where organic molecules produced by microorganisms bind mineral particles together.</li>
 <li>Increased nutrient availability: When microbes feed on soil organic carbon (in order to get energy), they release nitrogen and phosphorus that were tied to that carbon, thereby providing more nutrients for the plant.</li>
 <li>Improved trafficability: Meaning that the soil structure is improved and allows farming equipment to traverse the field more days in a given year.</li>
+<a href="https://cropwatch.unl.edu/2017/soil-organic-matter-and-its-benefits">Source for information.</a>
 </section>
-<section>
+<section><br>
 To increase the SOC and SOM in your soil, you can:
 
-Reduce tillage to minimize soil carbon losses and to slow organic matter decomposition processes.
-Apply fertilizers on cover crops and legumes to produce more biomass.
-Apply manure, plant material, or other carbon-rich waste.
-Graze, rather than harvest forage.
+<li> Reduce tillage to minimize soil carbon losses and to slow organic matter decomposition processes.</li>
+<li> Apply fertilizers on cover crops and legumes to produce more biomass.</li>
+<li> Apply manure, plant material, or other carbon-rich waste.</li>
+<li> Graze, rather than harvest forage.</li>
 <br>
-<a href="https://cropwatch.unl.edu/2017/soil-organic-matter-and-its-benefits">Source for information.</a>
-<a href="https://soilhealthinstitute.org/news-events/managing-for-soil-organic-carbon-is-fundamental-to-regenerative-agriculture/">Source for information.</a>
+
+
 By improving the SOC and SOM in your soil, you can enhance the health and productivity of your plants. However, the exact number of plants that can benefit will depend on various factors such as the type of plants, their spacing, the specific soil conditions, and the local climate.
-</section>
-    </div>
+<br><a href="https://soilhealthinstitute.org/news-events/managing-for-soil-organic-carbon-is-fundamental-to-regenerative-agriculture/">Source for information.</a>
+</section></div>
     <script>
 var x,y,z,a;
         // Here the value is stored in new variable x

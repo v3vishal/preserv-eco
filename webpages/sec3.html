@@ -1,9 +1,65 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            body {
+                font-family: 'Cairo', sans-serif;
+                margin: 20px;
+                line-height: 1.6;
+            }
+    
+            @font-face {
+                font-family: 'Cairo';
+                src: local('Cairo'), url('../fonts/Cairo/CairoVarWght.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+    
+            header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+    
+            section {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+    
+            h1 {
+                color: #333;
+            }
+    
+            p {
+                color: #555;
+            }
+            .highlight {
+                font-weight: bold;
+                color: #e44d26; /* Highlight color */
+            }
+    
+            .invasive-species {
+                margin-top: 30px;
+            }
+    
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+    
+            li {
+                margin-bottom: 10px;
+            }
+    
+            .human-impact {
+                margin-top: 30px;
+            }
+    
+        </style>
         <body>
+            <center><h1>Impact Calculator and Data Visualization</h1></center>
             <a href="https://pib.gov.in/PressReleaseIframePage.aspx?PRID=1943922#:~:text=The%20tiger%20abundance%20within%20the%20Tiger%20Reserve%20is%20highest%20in%20Corbett%20(260),%20followed%20by%20Bandipur%20(150)">Source for Tiger Amount</a>
     <div id="chartDiv" style="max-width: 1500px; height: 400px; margin: 0 auto"></div>
+    <center>
     <br>
     <label for="newTigerValue">Enter new Tiger value:</label>
     <input type="number" id="newTigerValue" placeholder="Enter new Tiger value">
@@ -20,9 +76,11 @@
     <label for="newCarnivoresValue">Enter new Carnivores value:</label>
     <input type="number" id="newCarnivoresValue" placeholder="Enter new Carnivores value">
     <button onclick="updateCarnivoresValue()">Update Carnivores</button>
+    </center>
     <div id="chartDiv2" style="max-width: 900px; height: 200px; margin: 0 auto;"></div>
-    <div id="chartDiv3" style="max-width: 900px; height: 400px; margin: 0 auto;"></div>
+    <div id="chartDiv3" style="max-width: 900px; height: 200px; margin: 0 auto;"></div>
     <br>  
+    
     <br> Here, to calculate the amount of Tigers that could have benefitted by the amount of trees lost, the following was done; <br> <br>
                 <li>As per the 10% law of energy transfer efficiency, with an assumption of 1000 Joules of energy absorption by a tree on 1,00,000 joules of sun energy that would fall on the surface of Earth, that translates to 1 Joule of energy
                     transferred to a tiger, where the tiger is the tertiary consumer. With an estimated 5000 Joules of energy consumption for a tiger per day, this would mean that around 5000 trees would be needed to sustain the energy requirement
@@ -31,12 +89,27 @@
                 <br><br> Presently, we have a very small number of tigers. The current extent of forestation and tree density is essential to maintain and sustain the current population. Any further reduction will not only create pressure on the
                 existing ecosystem but also limit further expansion of the tiger population. Incidents like fire, leading to a depletion of tree density would hence be detrimental to wildlife at large and in this case, tigers are the ones affected
                 by this.
-                <h4>Invasive species across few trophic levels:</h4>
-                <li> <u>Plants</u>: Water hyacinth, Carrot grass, Siam weed, Wild tamarind, Black wattle, Mesquite, Lantana camara, and Pogostemon benghalensis - these are a few invasive plants that can choke native species preventing energy
-                    transfer to the next trophic level, i.e. Herbivores and top predators.</li>
-                <li> <u>Herbivores</u>: The Yellow Crazy Ant species is one of the most invasive species, listed in the top 100 worst invaders in the world according to the Invasive Species Specialist Group. They are known to kill mammals, birds,
-                    reptiles, and land crabs which again affect the food chain.</li>
-                These all together indirectly affect the tiger causing endangerment and ecological imbalance.
+                <div class="invasive-species">
+                    <h2>Invasive Species across Few Trophic Levels:</h2>
+                    <ul>
+                        <li>Plants: Water hyacinth, Carrot grass, Siam weed, Wild tamarind, Black wattle, Mesquite, Lantana camara, and Pogostemon benghalensis - these are a few invasive plants that can choke native species preventing energy transfer to the next trophic level, i.e. Herbivores and top predators.</li>
+                        <li>Herbivores: The Yellow Crazy Ant species is one of the most invasive species...</li>
+                    </ul>
+                    <p>These all together indirectly affect the tiger causing endangerment and ecological imbalance.</p>
+                </div>
+
+
+        <div class="human-impact">
+            <h2>Impact on Humans and Society:</h2>
+            <p>The imbalance in trophic levels and the disruption of the ecosystem have profound impacts on humans and our society. As integral parts of the food web, we are interconnected with the well-being of other species.</p>
+            
+            <p>Decreased tiger population, driven by the loss of trees and disruption in the food chain, can lead to an increase in certain species that tigers would typically control. This imbalance could result in overpopulation of herbivores, affecting vegetation and potentially leading to increased human-wildlife conflicts as herbivores encroach on human settlements in search of food.</p>
+            
+            <p>Additionally, invasive species can further exacerbate the situation. The spread of invasive plants and herbivores can disrupt local ecosystems, affecting agriculture, water resources, and even human health.</p>
+            
+            <p>It is crucial for us to recognize our role in the ecosystem and strive for a balanced coexistence. Conservation efforts not only benefit wildlife but also contribute to the overall health and sustainability of our environment, directly impacting the quality of life for us and future generations.</p>
+        </div>
+
         </body>
         <script src="https://code.jscharting.com/latest/jscharting.js"></script>
     <script type="text/javascript" src="https://code.jscharting.com/latest/modules/toolbar.js"></script>

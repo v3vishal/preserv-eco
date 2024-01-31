@@ -167,15 +167,15 @@ var trophicLvls = 4;
                     herbval = Math.round(newHerbivoresValue);
                     carnval = Math.round(newHerbivoresValue*0.1);
                     tigrval = Math.round(carnval*0.1);
-                    tigrval = Math.round(tigrval/5);
+                    tigrval = Math.round(tigrval*6/5);
                     if(tigrval > 0){
                     amount = tigrval;
                     data = [];
                     data.push(
-                        {type: "Trees/Plants", value: (treeval*1.2)*5},
+                        {type: "Trees/Plants", value: Math.round((treeval)*6)},
                         {type: "Herbivores", value: Math.round(herbval)},
-                        {type: "Carnivores", value: Math.round(carnval/1.25)*1.2},
-                        {type: "Tigers", value: Math.round(tigrval)*6}
+                        {type: "Carnivores", value: Math.round(carnval*0.96)},
+                        {type: "Tigers", value: (tigrval)}
                     );
                     chart.destroy();
                     initializeChart();
@@ -197,8 +197,8 @@ var trophicLvls = 4;
                     {type: "Carnivores", value: newCarnivoresValue}
                 ];
                 
-                treeval = Math.round(herbval/0.1);
-                herbval = Math.round(newCarnivoresValue/0.1);
+                treeval = Math.round(((newCarnivoresValue/0.1)/0.1)*6.25);
+                herbval = Math.round((newCarnivoresValue/0.1)*1.25);
                 carnval = Math.round(newCarnivoresValue);
                 tigrval = Math.round(carnval*0.1);
                 tigrval = Math.round(tigrval/5);
@@ -208,8 +208,8 @@ var trophicLvls = 4;
                 data.push(
                     {type: "Trees/Plants", value: treeval},
                     {type: "Herbivores", value: Math.round(herbval/1.2)},
-                    {type: "Carnivores", value: Math.round(carnval/1.25)},
-                    {type: "Tigers", value: Math.round(tigrval)}
+                    {type: "Carnivores", value: Math.round(carnval)},
+                    {type: "Tigers", value: Math.round((tigrval)*6.25)}
                 );
                 chart.destroy();
                 initializeChart();
