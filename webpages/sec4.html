@@ -69,7 +69,7 @@
         <p style="color:DodgerBlue;">Enter the soil organic matter percentage:</p>
         <input type="text" id="organicMatterInput" name="organicMatterValue">
         <button type="button" onclick="calculateOrganicMatter()">Calculator</button>
-        <p style="color:DodgerBlue;">Value of SOIL organic matter % is</p>
+        <p style="color:DodgerBlue;">Value of SOIL organic carbon % is</p>
         <p style="color:DodgerBlue;" id="organicMatterResult"></p>
     </center>
 </section>
@@ -80,7 +80,7 @@
         <p style="color:DodgerBlue;">Enter the soil organic Carbon percentage:</p>
         <input type="text" id="organicCarbonInput" name="organicCarbonValue">
         <button type="button" onclick="calculateOrganicCarbon()">Calculator</button>
-        <p style="color:DodgerBlue;">Value of SOIL organic carbon % is</p>
+        <p style="color:DodgerBlue;">Value of SOIL organic matter % is</p>
         <p style="color:DodgerBlue;" id="organicCarbonResult"></p>
     </center>
 </section>
@@ -94,7 +94,7 @@
             if (isNaN(inputValue) || inputValue < 0 || inputValue > 30.96) {
                 resultElement.innerHTML = "Invalid input";
             } else {
-                resultElement.innerHTML = Math.round(inputValue / 1.72);
+                resultElement.innerHTML = Math.round(inputValue * 1.72);
             }
         }
     </script>
@@ -109,7 +109,7 @@
             if (isNaN(inputValue) || inputValue < 0 || inputValue > 18) {
                 resultElement.innerHTML = "Invalid input";
             } else {
-                resultElement.innerHTML = Math.round(inputValue * 1.72);
+                resultElement.innerHTML = Math.round(inputValue / 1.72);
             }
         }
     </script>
