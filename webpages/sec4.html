@@ -94,7 +94,7 @@
             if (isNaN(inputValue) || inputValue < 0 || inputValue > 30.96) {
                 resultElement.innerHTML = "Invalid input";
             } else {
-                resultElement.innerHTML = Math.round(inputValue * 1.72);
+                resultElement.innerHTML = inputValue * 1.72;
             }
         }
     </script>
@@ -109,7 +109,7 @@
             if (isNaN(inputValue) || inputValue < 0 || inputValue > 18) {
                 resultElement.innerHTML = "Invalid input";
             } else {
-                resultElement.innerHTML = Math.round(inputValue / 1.72);
+                resultElement.innerHTML = inputValue / 1.72;
             }
         }
     </script>
