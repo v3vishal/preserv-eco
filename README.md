@@ -1,7 +1,7 @@
 # Preserving Ecosystems
-Hey there! If you want to see my work changes, please click on the commits button near the header!
+Hey there! To view my work changes, please click the 'Commits' button located near the header.
 
-Preserving Ecosystems is a project that works on computational formulae that help to calculate the impact of various scenarios.
+Preserving Ecosystems is a project that utilises computational formulae to calculate the impact of various scenarios.
 
 Save this repo to get regular updates!
 
